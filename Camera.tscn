@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Camera.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/ChromaticAberration.shader" type="Shader" id=2]
+[ext_resource path="res://Sprites/White.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/ChromaticAberrationSampler.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/strength_sampler = ExtResource( 4 )
 
 [node name="Camera" type="Camera2D"]
 current = true
@@ -8,4 +15,18 @@ script = ExtResource( 1 )
 
 [node name="ScreenShakeTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="timeout" from="ScreenShakeTimer" to="." method="_on_ScreenShakeTimer_timeout"]
+
+[node name="ChromaticAberrationTimer" type="Timer" parent="."]
+
+[node name="ChromaticAberrationTextureRect" type="TextureRect" parent="."]
+material = SubResource( 1 )
+margin_left = -160.0
+margin_top = -120.0
+margin_right = -159.0
+margin_bottom = -119.0
+rect_scale = Vector2( 320, 240 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="ChromaticAberrationTimer" to="." method="_on_ChromaticAberrationTimer_timeout"]

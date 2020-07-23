@@ -54,7 +54,7 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "RunBackward"
 length = 0.4
 loop = true
@@ -71,8 +71,7 @@ tracks/0/keys = {
 "values": [ 7, 6, 5, 4 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "RunForward"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -105,8 +104,8 @@ shape = SubResource( 1 )
 anims/Fall = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
-anims/RunBackward = SubResource( 6 )
-anims/RunForward = SubResource( 5 )
+anims/RunBackward = SubResource( 5 )
+anims/RunForward = SubResource( 6 )
 
 [node name="JumpTimer" type="Timer" parent="."]
 wait_time = 0.3
@@ -116,9 +115,8 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="ChromaticAberrationTimer" type="Timer" parent="."]
-
 [node name="Camera" parent="." instance=ExtResource( 3 )]
+[connection signal="chromaticAberration" from="." to="Camera" method="chromaticAberration"]
+[connection signal="screenShake" from="." to="Camera" method="add_trauma"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_JumpBufferTimer_timeout"]
-[connection signal="timeout" from="ChromaticAberrationTimer" to="." method="_on_ChromaticAberrationTimer_timeout"]

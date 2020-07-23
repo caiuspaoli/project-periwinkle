@@ -1,25 +1,29 @@
 extends Camera2D
 
-const DAMP_EASING = 1.0
+export var decay = 0.95
+export var maxOffset = Vector2(16, 16)
 
-var amplitude = 0
-var isShaking = false
+var trauma = 0.0
 
-onready var screenShakeTimer = $ScreenShakeTimer
+onready var chromaticAberrationTimer = $ChromaticAberrationTimer
+onready var chromaticAberrationTextureRect = $ChromaticAberrationTextureRect
 
 func _process(delta):
-	if isShaking:
-		var damping = ease(screenShakeTimer.get_time_left() / screenShakeTimer.get_wait_time(), DAMP_EASING)
-		offset = Vector2(rand_range(-amplitude, amplitude) * damping, rand_range(-amplitude, amplitude) * damping)
+	if trauma:
+		trauma = max(trauma - decay * delta, 0)
+		shake()
 
-func shake(duration = 0.4, amplitude = 0.4):
-	isShaking = true
-	
-	self.amplitude = amplitude
-	screenShakeTimer.set_wait_time(duration)
-	screenShakeTimer.start()
+func add_trauma(amount):
+	trauma = min(trauma + amount, 1.0)
 
+func shake():
+	offset.x = maxOffset.x * trauma * rand_range(-1, 1)
+	offset.y = maxOffset.y * trauma * rand_range(-1, 1)
 
-func _on_ScreenShakeTimer_timeout():
-	isShaking = false
-	amplitude = 0
+func chromaticAberration(duration):
+	chromaticAberrationTextureRect.visible = true
+	chromaticAberrationTimer.set_wait_time(duration)
+	chromaticAberrationTimer.start()
+
+func _on_ChromaticAberrationTimer_timeout():
+	chromaticAberrationTextureRect.visible = false
