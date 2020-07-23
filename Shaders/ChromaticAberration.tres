@@ -6,9 +6,9 @@ code = "shader_type canvas_item;
 void fragment() {
 	vec4 color = texture(TEXTURE, UV);
 	
-	color.r = texture(TEXTURE, vec2(UV.x + 0.1, UV.y)).r;
+	color.r = texture(TEXTURE, vec2(UV.x + 0.01, UV.y)).r;
 	color.g = texture(TEXTURE, UV).g;
-	color.b = texture(TEXTURE, vec2(UV.x - 0.1, UV.y)).b;
+	color.b = texture(TEXTURE, vec2(UV.x - 0.01, UV.y)).b;
 	COLOR = color;
 }"
 custom_defines = ""

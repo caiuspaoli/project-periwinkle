@@ -36,8 +36,8 @@ func _input(event):
 		
 	if event.is_action_pressed("shoot"):
 		emit_signal("slowTime", 0.2, 0.8)
-		camera.shake(1.0 / 30, 8)
-		chromaticAberration(1.0 / 30)
+		camera.shake(0.03, 8)
+		chromaticAberration(0.03)
 
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -51,7 +51,10 @@ func _physics_process(delta):
 		if x_input != 0:
 			motion.x += x_input * ACCELERATION * delta
 			motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
-			animationPlayer.play("Run")
+			if sign(x_input) == int(sprite.flip_h) * 2 - 1:
+				animationPlayer.play("RunBackward")
+			else:
+				animationPlayer.play("RunForward")
 		else:
 			motion.x = lerp(motion.x, 0, FRICTION * delta)
 			animationPlayer.play("Idle")
@@ -69,10 +72,14 @@ func _physics_process(delta):
 		if isJumping:
 			if Input.is_action_pressed("jump"):
 				motion.y = -JUMP_SPEED
-				animationPlayer.play("Jump")
 			else:
 				isJumping = false
 				jumpTimer.stop()
+		
+		if motion.y < 0:
+			animationPlayer.play("Jump")
+		else:
+			animationPlayer.play("Fall")
 	
 	motion = move_and_slide(motion, Vector2.UP)
 	
