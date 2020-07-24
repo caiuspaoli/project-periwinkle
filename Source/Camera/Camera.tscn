@@ -1,9 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Camera.gd" type="Script" id=1]
-[ext_resource path="res://Shaders/ChromaticAberration.shader" type="Shader" id=2]
-[ext_resource path="res://Sprites/White.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/ChromaticAberrationSampler.png" type="Texture" id=4]
+[ext_resource path="res://Source/Camera/Camera.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Shaders/ChromaticAberration.shader" type="Shader" id=2]
+[ext_resource path="res://Assets/Sprites/White.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/ChromaticAberrationSampler.png" type="Texture" id=4]
+
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/White.png-116347c7613c8ee0f8a971b42447166e.stex"
+path="res://.import/Guy.png-208ac16f35312534967226448cf958d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/White.png"
-dest_files=[ "res://.import/White.png-116347c7613c8ee0f8a971b42447166e.stex" ]
+source_file="res://Assets/Sprites/Guy.png"
+dest_files=[ "res://.import/Guy.png-208ac16f35312534967226448cf958d6.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,18 +1,16 @@
 extends KinematicBody2D
 
-signal slowTime(duration, strength)
-signal screenShake(amount)
-signal chromaticAberration(duration)
+signal shoot()
 
 const TARGET_FPS = 60
-var ACCELERATION = 8 * TARGET_FPS
-var AIR_ACCELERATION = 4 * TARGET_FPS
-var MAX_SPEED = 96
-var FRICTION = 0.4 * TARGET_FPS
-var AIR_RESISTANCE = 0.1 * TARGET_FPS
-var GRAVITY_ACCELERATION = 12 * TARGET_FPS
-var GRAVITY_SPEED = 192
-var JUMP_SPEED = 160
+var acceleration = 8 * TARGET_FPS
+var airAcceleration = 4 * TARGET_FPS
+var maxSpeed = 96
+var friction = 0.4 * TARGET_FPS
+var airResistance = 0.1 * TARGET_FPS
+var gravityAcceleration = 12 * TARGET_FPS
+var gravitySpeed = 192
+var jumpSpeed = 160
 
 var motion = Vector2.ZERO
 
@@ -33,28 +31,26 @@ func _input(event):
 		jumpBufferTimer.start()
 		
 	if event.is_action_pressed("shoot"):
-		emit_signal("slowTime", 0.2, 0.8)
-		emit_signal("screenShake", 0.2)
-		emit_signal("chromaticAberration", 0.03)
+		emit_signal("shoot")
 
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
-	motion.y += GRAVITY_ACCELERATION * delta
-	motion.y = clamp(motion.y, -JUMP_SPEED, GRAVITY_SPEED)
+	motion.y += gravityAcceleration * delta
+	motion.y = clamp(motion.y, -jumpSpeed, gravitySpeed)
 	
-	sprite.flip_h = get_global_mouse_position().x < position.x
+	sprite.flip_h = get_global_mouse_position().x < global_position.x
 	
 	if is_on_floor():
 		if x_input != 0:
-			motion.x += x_input * ACCELERATION * delta
-			motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+			motion.x += x_input * acceleration * delta
+			motion.x = clamp(motion.x, -maxSpeed, maxSpeed)
 			if sign(x_input) == int(sprite.flip_h) * 2 - 1:
 				animationPlayer.play("RunBackward")
 			else:
 				animationPlayer.play("RunForward")
 		else:
-			motion.x = lerp(motion.x, 0, FRICTION * delta)
+			motion.x = lerp(motion.x, 0, friction * delta)
 			animationPlayer.play("Idle")
 		
 		isJumping = false
@@ -62,14 +58,14 @@ func _physics_process(delta):
 			jump()
 	else:
 		if x_input != 0:
-			motion.x += x_input * AIR_ACCELERATION * delta
-			motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+			motion.x += x_input * airAcceleration * delta
+			motion.x = clamp(motion.x, -maxSpeed, maxSpeed)
 		else:
-			motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
+			motion.x = lerp(motion.x, 0, airResistance * delta)
 			
 		if isJumping:
 			if Input.is_action_pressed("jump"):
-				motion.y = -JUMP_SPEED
+				motion.y = -jumpSpeed
 			else:
 				isJumping = false
 				jumpTimer.stop()
@@ -82,7 +78,7 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP)
 	
 func jump():
-	motion.y = -JUMP_SPEED
+	motion.y = -jumpSpeed
 	isJumping = true
 	jumpTimer.start()
 	isJumpBuffered = false

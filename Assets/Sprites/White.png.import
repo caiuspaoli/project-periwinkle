@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Crosshair.png-a2c6dd7c570cec81011a43a0b2be86c6.stex"
+path="res://.import/White.png-1491593b7f41a264c8d0cea399a1694e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Crosshair.png"
-dest_files=[ "res://.import/Crosshair.png-a2c6dd7c570cec81011a43a0b2be86c6.stex" ]
+source_file="res://Assets/Sprites/White.png"
+dest_files=[ "res://.import/White.png-1491593b7f41a264c8d0cea399a1694e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
