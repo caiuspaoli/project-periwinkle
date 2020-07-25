@@ -8,24 +8,40 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Timer",
+"class": "KeyedTimer",
+"language": "GDScript",
+"path": "res://Source/Types/KeyedTimer.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://Source/Types/StateMachine.gd"
+} ]
 _global_script_class_icons={
-
+"KeyedTimer": "",
+"StateMachine": ""
 }
 
 [application]
 
 config/name="Project Periwinkle"
+config/description="We'll see what happens"
 run/main_scene="res://World.tscn"
 boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.176471, 0.172549, 0.239216, 1 )
 config/icon="res://icon.png"
+config/macos_native_icon="res://icon.png"
+config/windows_native_icon="res://icon.png"
 
 [display]
 
 window/size/width=320
 window/size/height=240
+window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=960
 mouse_cursor/custom_image="res://Assets/Sprites/Crosshair.png"
@@ -105,4 +121,5 @@ shoot={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/2d/use_pixel_snap=true
