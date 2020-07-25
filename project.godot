@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "CollisionParticleSystem",
+"language": "GDScript",
+"path": "res://Source/Particle Systems/CollisionParticleSystem.gd"
+}, {
 "base": "Timer",
 "class": "KeyedTimer",
 "language": "GDScript",
 "path": "res://Source/Types/KeyedTimer.gd"
+}, {
+"base": "Node2D",
+"class": "LineTracerSystem",
+"language": "GDScript",
+"path": "res://Source/Tracer Systems/LineTracerSystem.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
@@ -20,7 +30,9 @@ _global_script_classes=[ {
 "path": "res://Source/Types/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"CollisionParticleSystem": "",
 "KeyedTimer": "",
+"LineTracerSystem": "",
 "StateMachine": ""
 }
 
@@ -28,7 +40,7 @@ _global_script_class_icons={
 
 config/name="Project Periwinkle"
 config/description="We'll see what happens"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Game.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false

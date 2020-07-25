@@ -1,4 +1,5 @@
 extends Node2D
+class_name CollisionParticleSystem
 
 var amount = 0
 var point = Vector2.ZERO
