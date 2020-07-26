@@ -100,3 +100,18 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Weapons" type="VBoxContainer" parent="VBoxContainer/Bottom"]
+margin_left = 96.0
+margin_right = 96.0
+margin_bottom = 38.0
+
+[node name="Current" type="GridContainer" parent="VBoxContainer/Bottom/Weapons"]
+margin_bottom = 32.0
+
+[node name="AmmoValue" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+margin_bottom = 14.0
+
+[node name="ReserveAmmoValue" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+margin_top = 18.0
+margin_bottom = 32.0
