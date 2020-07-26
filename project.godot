@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://Source/Types/StateMachine.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Source/Types/Weapon.gd"
 } ]
 _global_script_class_icons={
 "CollisionParticleSystem": "",
 "KeyedTimer": "",
 "LineTracerSystem": "",
-"StateMachine": ""
+"StateMachine": "",
+"Weapon": ""
 }
 
 [application]
@@ -45,9 +51,9 @@ boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.176471, 0.172549, 0.239216, 1 )
-config/icon="res://icon.png"
-config/macos_native_icon="res://icon.png"
-config/windows_native_icon="res://icon.png"
+config/icon="res://icon.ico"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
@@ -56,8 +62,6 @@ window/size/height=240
 window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=960
-mouse_cursor/custom_image="res://Assets/Sprites/Crosshair.png"
-mouse_cursor/custom_image_hotspot=Vector2( 32, 32 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

@@ -18,28 +18,26 @@ onready var timer = $Timer
 
 func setup(_point: Vector2, _length: float, _angle: float, _duration: float, _color: Color):
 	point = _point
-	length = _length
+	length = max(0, _length + 1)
 	angle = _angle
 	duration = _duration
 	color = _color
 	
 func _ready():
 	position = point
-	sprite.region_rect.end.x = length + 1
+	sprite.region_rect.end.x = length
 	rotation = angle
 	sprite.modulate = color
-	timer.set_wait_time(duration)
-	timer.start()
 	
 	startTime = OS.get_ticks_msec()
 	durationMs = duration * 1000
 	startAlpha = color.a
 	
-func _process(delta):
-	sprite.modulate = Color(color.r, color.g, color.b, ease_in_circ(OS.get_ticks_msec() - startTime, startAlpha, END_ALPHA, durationMs))
-	
-func _on_Timer_timeout():
-	queue_free()
+func _process(_delta):
+	var currentTime = OS.get_ticks_msec() - startTime
+	if currentTime >= durationMs:
+		queue_free()
+	sprite.modulate = Color(color.r, color.g, color.b, ease_in_circ(currentTime, startAlpha, END_ALPHA, durationMs))
 	
 # t: current time
 # b: start value

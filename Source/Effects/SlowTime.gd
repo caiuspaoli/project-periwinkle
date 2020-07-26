@@ -7,7 +7,10 @@ var startTime
 var durationMs
 var startValue
 
-func start(duration = 10, strength = 1):
+func start(duration, strength):
+	if duration == 0:
+		isActive = false
+		return
 	startTime = OS.get_ticks_msec()
 	durationMs = duration * 1000
 	startValue = 1 - strength
@@ -17,7 +20,7 @@ func start(duration = 10, strength = 1):
 func _ready():
 	Engine.time_scale = END_VALUE
 	
-func _process(delta):
+func _process(_delta):
 	if isActive:
 		var currentTime = OS.get_ticks_msec() - startTime
 		var value = ease_in_circ(currentTime, startValue, END_VALUE, durationMs)

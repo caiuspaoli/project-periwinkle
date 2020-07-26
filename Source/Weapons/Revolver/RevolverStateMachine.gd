@@ -6,17 +6,17 @@ func _ready():
 	set_state_id(states.idle.id)
 	
 	add_buffer("shoot", 0.1, "shoot", ActionTrigger.JUST_PRESSED)
-	
-func _enter_state_id(newStateId, previousStateId):
-	match newStateId:
+
+func _enter_state_id(_newStateId, _previousStateId):
+	match _newStateId:
 		
 		states.cooldown.id:
 			parent.emit_effects()
 			parent.camera.set_trauma(parent.screenShakeTrauma)
 			parent.camera.chromatic_aberration(parent.chromaticAberrationDuration)
 			parent.slowTime.start(parent.slowTimeDuration, parent.slowTimeStrength)
-	
-func _state_logic(delta):
+
+func _state_logic(_delta):
 	match stateId:
 		
 		states.idle.id:
@@ -30,8 +30,8 @@ func _state_logic(delta):
 			parent.rotation = 0
 			parent.rotation = parent.get_angle_to(mousePosition)
 			parent.sprite.flip_v = mousePosition.x < parent.global_position.x
-			
-func _state_transition(delta):
+
+func _state_transition(_delta):
 	match stateId:
 		
 		states.idle.id:

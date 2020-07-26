@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Source/Camera/Camera.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Shaders/ChromaticAberration.shader" type="Shader" id=2]
-[ext_resource path="res://Assets/Sprites/White.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/ChromaticAberrationSampler.png" type="Texture" id=4]
-
-
+[ext_resource path="res://Shaders/ChromaticAberration.shader" type="Shader" id=2]
+[ext_resource path="res://Assets/White.png" type="Texture" id=3]
+[ext_resource path="res://Shaders/ChromaticAberrationSampler.png" type="Texture" id=4]
+[ext_resource path="res://Source/Camera/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Source/Camera/HUD.gd" type="Script" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -20,7 +20,15 @@ one_shot = true
 
 [node name="ChromaticAberrationTimer" type="Timer" parent="."]
 
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+margin_left = -152.0
+margin_top = -112.0
+margin_right = 152.0
+margin_bottom = 112.0
+script = ExtResource( 6 )
+
 [node name="ChromaticAberrationTextureRect" type="TextureRect" parent="."]
+visible = false
 material = SubResource( 1 )
 margin_left = -160.0
 margin_top = -120.0

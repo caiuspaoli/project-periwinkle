@@ -1,19 +1,23 @@
 extends Camera2D
 
-export var decay = 0.95
-export var maxOffset = Vector2(16, 16)
+export var targetWeight = 0.2
+export var acceleration = 0.025
 
+export var traumaDecay = 0.95
+export var maxTraumaOffset = Vector2(16, 16)
 var trauma = 0.0
 
+onready var parent = get_parent()
+onready var hud = $HUD
 onready var chromaticAberrationTimer = $ChromaticAberrationTimer
 onready var chromaticAberrationTextureRect = $ChromaticAberrationTextureRect
 
-func _ready():
-	chromaticAberrationTextureRect.visible = false
-
-func _process(delta):
+func _process(_delta):
+	var targetPosition = parent.get_local_mouse_position() * targetWeight
+	position = lerp(position, targetPosition, acceleration)
+	
 	if trauma:
-		trauma = max(trauma - decay * delta, 0)
+		trauma = max(trauma - traumaDecay * _delta, 0)
 		shake()
 
 func set_trauma(amount, force = false):
@@ -26,8 +30,8 @@ func add_trauma(amount):
 	trauma = min(trauma + amount, 1.0)
 
 func shake():
-	offset.x = maxOffset.x * trauma * rand_range(-1, 1)
-	offset.y = maxOffset.y * trauma * rand_range(-1, 1)
+	offset.x = maxTraumaOffset.x * trauma * rand_range(-1, 1)
+	offset.y = maxTraumaOffset.y * trauma * rand_range(-1, 1)
 
 func chromatic_aberration(duration):
 	chromaticAberrationTextureRect.visible = true

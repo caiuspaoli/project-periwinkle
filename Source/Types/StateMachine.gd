@@ -2,7 +2,7 @@ extends Node
 class_name StateMachine
 
 var stateId setget set_state_id
-var previousStateId
+var _previousStateId
 
 var states = {}
 var buffers = {}
@@ -44,37 +44,37 @@ func _input(event):
 					buffers[i].buffered = true
 					buffers[i].timer.start()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if stateId != null:
-		_state_logic(delta)
-		var transition = _state_transition(delta)
+		_state_logic(_delta)
+		var transition = _state_transition(_delta)
 		if transition != null:
 			set_state_id(transition)
 
-func _state_logic(delta):
+func _state_logic(_delta):
 	pass
 	
-func _state_transition(delta):
+func _state_transition(_delta):
 	return null
 	
-func _enter_state_id(newStateId, oldStateId):
+func _enter_state_id(_newStateId, _oldStateId):
 	pass
 	
-func _exit_state_id(oldStateId, newStateId):
+func _exit_state_id(_oldStateId, _newStateId):
 	pass
 	
-func set_state_id(newStateId):
-	previousStateId = stateId
-	stateId = newStateId
+func set_state_id(_newStateId):
+	_previousStateId = stateId
+	stateId = _newStateId
 	
 	for key in states:
-		if states[key].id != previousStateId:
+		if states[key].id != _previousStateId:
 			continue
 		
-		if previousStateId:
+		if _previousStateId:
 			if states[key].timer:
 				states[key].timer.stop()
-			_exit_state_id(previousStateId, stateId)
+			_exit_state_id(_previousStateId, stateId)
 			
 	for key in states:
 		if states[key].id != stateId:
@@ -82,7 +82,7 @@ func set_state_id(newStateId):
 		
 		if states[key].timer:
 			states[key].timer.start()
-		_enter_state_id(stateId, previousStateId)
+		_enter_state_id(stateId, _previousStateId)
 	
 func add_state(key, duration = null, fallbackKey = null):
 	var timer = null
@@ -133,7 +133,7 @@ func _on_state_timeout(key):
 	if states[key].fallbackKey:
 		set_state_id(states[states[key].fallbackKey].id)
 	else:
-		set_state_id(previousStateId)
+		set_state_id(_previousStateId)
 
 func _on_buffer_timeout(key):
 	buffers[key].buffered = false

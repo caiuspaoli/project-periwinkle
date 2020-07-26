@@ -6,7 +6,6 @@ signal keyedTimeout(key)
 var key setget set_key
 
 func _ready():
-	print(key)
 	self.connect("timeout", self, "_on_self_Timeout")
 	
 func set_key(value):
