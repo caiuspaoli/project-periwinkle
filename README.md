@@ -1,3 +1,3 @@
 # Project Periwinkle or something...
 ## Run
-The [build](build) folder includes all files needed to run.
+The [build](build) folder includes all files needed to run the latest export.
