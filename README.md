@@ -1,3 +1,3 @@
 # Project Periwinkle or something...
 ## Run
-The [build](build/build.zip) zip file includes all files needed to run the latest export.
+The <a href="build/build.zip" download>build.zip</a> file includes all files needed to run the latest export.
