@@ -44,7 +44,7 @@ func _state_transition(_delta):
 			if parent.ammo <= 0 and parent.reserveAmmo > 0:
 				return states.reload.id
 			if parent.get_parent() and parent.get_parent().canShoot and parent.ammo > 0 and use_buffer("shoot"):
-				parent.shoot()
+				parent._shoot()
 				parent.ammo -= 1
 				if parent.ammo <= 0:
 					return states.reload.id

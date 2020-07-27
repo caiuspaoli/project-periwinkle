@@ -1,5 +1,7 @@
 extends MarginContainer
 
+export var font = preload("res://Assets/Fonts/emulogic.tres")
+
 onready var stats = get_node("VBoxContainer/Bottom/Stats")
 onready var health = stats.get_node("Health/HealthValue")
 onready var maxHealth = stats.get_node("Health/MaxHealthValue")

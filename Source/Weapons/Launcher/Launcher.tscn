@@ -10,6 +10,8 @@
 script = ExtResource( 1 )
 itemTexture = ExtResource( 5 )
 offset = Vector2( 0, -7 )
+screenShakeTrauma = 0.3
+chromaticAberrationDuration = 0.3
 clipSize = 2
 reserveAmmo = 12
 

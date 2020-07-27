@@ -12,22 +12,10 @@ export var barrelParticlesAmount = 2
 export var collisionParticlesColor = Color.white
 export var collisionParticlesAmount = 5
 
-export var tracerDuration = 0.4
+export var tracerDuration = 0.3
 export var tracerColor = Color(1, 1, 0, 0.4)
 
-export var screenShakeTrauma = 0.2
-export var chromaticAberrationDuration = 0.05
-export var slowTimeDuration = 0.2
-export var slowTimeStrength = 0.8 
-
-onready var root = get_tree().root
-onready var parent = get_parent()
-onready var stateMachine = $StateMachine
-onready var sprite = $Sprite
 onready var rayCast = $RayCast
-onready var inventory = $Inventory
-onready var camera = get_parent().get_node("Camera")
-onready var slowTime = get_node("/root/Game/Effects/SlowTime")
 
 func _ready():
 	var node = parent
@@ -35,11 +23,9 @@ func _ready():
 		rayCast.add_exception(parent)
 		node = node.get_parent()
 
-func shoot():
+func _shoot():
+	._shoot()
 	emit_effects()
-	camera.set_trauma(screenShakeTrauma)
-	camera.chromatic_aberration(chromaticAberrationDuration)
-	slowTime.start(slowTimeDuration, slowTimeStrength)
 
 func emit_effects():
 	var barrelNormal = Vector2(cos(rotation), sin(rotation))

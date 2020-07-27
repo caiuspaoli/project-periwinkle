@@ -64,3 +64,8 @@ func update_weapon_sprites():
 		textureRect.texture = weaponSprites[i].texture
 		textureRect.flip_h = true
 		hBoxContainer.call_deferred("add_child", textureRect)
+		
+		var label = Label.new()
+		label.text = String(i + 1)
+		label.add_font_override("font", parent.camera.hud.font)
+		hBoxContainer.call_deferred("add_child", label)

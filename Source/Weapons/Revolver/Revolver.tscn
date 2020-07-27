@@ -9,6 +9,10 @@
 script = ExtResource( 1 )
 itemTexture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
+screenShakeTrauma = 0.2
+chromaticAberrationDuration = 0.2
+slowTimeDuration = 0.3
+slowTimeStrength = 0.8
 clipSize = 8
 reserveAmmo = 64
 
@@ -17,6 +21,6 @@ texture = ExtResource( 2 )
 
 [node name="RayCast" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 128, 0 )
+cast_to = Vector2( 256, 0 )
 
 [node name="StateMachine" parent="." instance=ExtResource( 3 )]
