@@ -32,7 +32,7 @@ func _process(_delta):
 	update_weapon_sprites()
 
 func set_weapon(index):
-	if index < 0 or index >= weapons.size():
+	if index < 0 or index >= weapons.size() or index == currentWeaponIndex:
 		return
 	parent.call_deferred("remove_child", parent.weapon)
 	parent.weapon = weapons[index]
@@ -41,6 +41,8 @@ func set_weapon(index):
 	currentWeaponIndex = index
 	
 func scroll_weapons(offset):
+	if offset == 0:
+		return
 	set_weapon(int(fposmod(currentWeaponIndex + offset, weapons.size())))
 	
 func update_weapon_sprites():

@@ -14,7 +14,6 @@ var durationMs
 var startAlpha
 
 onready var sprite = $Sprite
-onready var timer = $Timer
 
 func setup(_point: Vector2, _length: float, _angle: float, _duration: float, _color: Color):
 	point = _point

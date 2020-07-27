@@ -116,4 +116,4 @@ anims/RunForward = SubResource( 6 )
 [node name="StateMachine" parent="." instance=ExtResource( 5 )]
 
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
-weaponScenes = [ ExtResource( 7 ), ExtResource( 2 ) ]
+weaponScenes = [ ExtResource( 2 ), ExtResource( 7 ) ]

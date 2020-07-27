@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/RevolverShootSound.wav-f5a0832a6fd40e95c91682d653b9bbde.sample"
+
+[deps]
+
+source_file="res://Source/Weapons/Revolver/RevolverShootSound.wav"
+dest_files=[ "res://.import/RevolverShootSound.wav-f5a0832a6fd40e95c91682d653b9bbde.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

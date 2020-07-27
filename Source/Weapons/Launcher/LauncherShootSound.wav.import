@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LauncherShootSound.wav-159d9039a3b4719bea5cc9213d8b2266.sample"
+
+[deps]
+
+source_file="res://Source/Weapons/Launcher/LauncherShootSound.wav"
+dest_files=[ "res://.import/LauncherShootSound.wav-159d9039a3b4719bea5cc9213d8b2266.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

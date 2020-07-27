@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cool Guy.ogg-fe34c09f87014f9cb89e9f4e9a603929.oggstr"
+
+[deps]
+
+source_file="res://Assets/Music/Cool Guy.ogg"
+dest_files=[ "res://.import/Cool Guy.ogg-fe34c09f87014f9cb89e9f4e9a603929.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

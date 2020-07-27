@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WeaponFailSound.wav-41971f3ac3030cddcbe5d0051b7faecd.sample"
+
+[deps]
+
+source_file="res://Source/Weapons/WeaponFailSound.wav"
+dest_files=[ "res://.import/WeaponFailSound.wav-41971f3ac3030cddcbe5d0051b7faecd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

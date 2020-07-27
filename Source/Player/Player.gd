@@ -30,6 +30,7 @@ onready var inventory = $Inventory
 
 func _ready():	
 	set_cursor()
+	get_node("/root/Game/MusicController").play(load("res://Assets/Music/Eventually.ogg"))
 
 func _process(_delta):
 	update_hud()

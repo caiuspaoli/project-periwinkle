@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Source/Weapons/Revolver/RevolverStateMachine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Source/Weapons/Revolver/Revolver.gd" type="Script" id=2]
+[ext_resource path="res://Source/Weapons/Revolver/Revolver.png" type="Texture" id=3]
+[ext_resource path="res://Source/Weapons/Revolver/RevolverIcon.png" type="Texture" id=4]
+
+[node name="Revolver" type="Node2D"]
+script = ExtResource( 2 )
+itemTexture = ExtResource( 4 )
+offset = Vector2( 0, -8 )
+screenShakeTrauma = 0.2
+chromaticAberrationDuration = 0.2
+slowTimeDuration = 0.3
+slowTimeStrength = 0.8
+clipSize = 8
+reserveAmmo = 64
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="RayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 256, 0 )
+
+[node name="StateMachine" parent="." instance=ExtResource( 1 )]
