@@ -5,28 +5,32 @@
 [node name="HUD" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 8.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 320.0
+margin_right = 328.0
 margin_bottom = 240.0
 alignment = 2
 
+[node name="Top" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 208.0
+margin_right = 328.0
+margin_bottom = 208.0
+
 [node name="Bottom" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 202.0
-margin_right = 320.0
+margin_top = 212.0
+margin_right = 328.0
 margin_bottom = 240.0
 
 [node name="Stats" type="VBoxContainer" parent="VBoxContainer/Bottom"]
 margin_right = 92.0
-margin_bottom = 38.0
+margin_bottom = 28.0
+alignment = 2
 
-[node name="Health" type="GridContainer" parent="VBoxContainer/Bottom/Stats"]
+[node name="Health" type="HBoxContainer" parent="VBoxContainer/Bottom/Stats"]
+margin_top = 4.0
 margin_right = 92.0
-margin_bottom = 10.0
-columns = 4
+margin_bottom = 14.0
 
 [node name="HealthLabel" type="Label" parent="VBoxContainer/Bottom/Stats/Health"]
 margin_right = 56.0
@@ -61,11 +65,10 @@ margin_bottom = 10.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 
-[node name="Position" type="GridContainer" parent="VBoxContainer/Bottom/Stats"]
-margin_top = 14.0
+[node name="Position" type="HBoxContainer" parent="VBoxContainer/Bottom/Stats"]
+margin_top = 18.0
 margin_right = 92.0
-margin_bottom = 38.0
-columns = 2
+margin_bottom = 28.0
 
 [node name="XLabel" type="Label" parent="VBoxContainer/Bottom/Stats/Position"]
 margin_right = 16.0
@@ -84,34 +87,72 @@ __meta__ = {
 }
 
 [node name="YLabel" type="Label" parent="VBoxContainer/Bottom/Stats/Position"]
-margin_top = 14.0
-margin_right = 16.0
-margin_bottom = 24.0
+margin_left = 32.0
+margin_right = 48.0
+margin_bottom = 10.0
 custom_fonts/font = ExtResource( 1 )
 text = "Y:"
 
 [node name="YValue" type="Label" parent="VBoxContainer/Bottom/Stats/Position"]
-margin_left = 20.0
-margin_top = 14.0
-margin_right = 28.0
-margin_bottom = 24.0
+margin_left = 52.0
+margin_right = 60.0
+margin_bottom = 10.0
 custom_fonts/font = ExtResource( 1 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Weapons" type="VBoxContainer" parent="VBoxContainer/Bottom"]
+[node name="Seperator" type="Control" parent="VBoxContainer/Bottom"]
 margin_left = 96.0
-margin_right = 96.0
-margin_bottom = 38.0
+margin_right = 288.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
 
-[node name="Current" type="GridContainer" parent="VBoxContainer/Bottom/Weapons"]
-margin_bottom = 32.0
+[node name="Weapons" type="VBoxContainer" parent="VBoxContainer/Bottom"]
+margin_left = 292.0
+margin_right = 328.0
+margin_bottom = 28.0
+alignment = 2
 
-[node name="AmmoValue" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+[node name="All" type="VBoxContainer" parent="VBoxContainer/Bottom/Weapons"]
+margin_right = 36.0
 margin_bottom = 14.0
 
-[node name="ReserveAmmoValue" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+[node name="Label" type="Label" parent="VBoxContainer/Bottom/Weapons/All"]
+margin_right = 36.0
+margin_bottom = 14.0
+text = "HI"
+
+[node name="Current" type="HBoxContainer" parent="VBoxContainer/Bottom/Weapons"]
 margin_top = 18.0
-margin_bottom = 32.0
+margin_right = 36.0
+margin_bottom = 28.0
+
+[node name="AmmoLabel" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoValue" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+margin_left = 4.0
+margin_right = 12.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="ReserveAmmoLabel" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+margin_left = 16.0
+margin_right = 24.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 1 )
+text = "/"
+
+[node name="ReserveAmmoValue" type="Label" parent="VBoxContainer/Bottom/Weapons/Current"]
+margin_left = 28.0
+margin_right = 36.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"

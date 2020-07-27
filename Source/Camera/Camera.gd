@@ -34,9 +34,9 @@ func shake():
 	offset.y = maxTraumaOffset.y * trauma * rand_range(-1, 1)
 
 func chromatic_aberration(duration):
-	chromaticAberrationTextureRect.visible = true
+	chromaticAberrationTextureRect.show()
 	chromaticAberrationTimer.set_wait_time(duration)
 	chromaticAberrationTimer.start()
 
 func _on_ChromaticAberrationTimer_timeout():
-	chromaticAberrationTextureRect.visible = false
+	chromaticAberrationTextureRect.hide()

@@ -18,6 +18,13 @@ onready var sprite = $Sprite
 onready var camera = get_parent().get_node("Camera")
 onready var slowTime = get_node("/root/Game/Effects/SlowTime")
 
+func shoot():
+	apply_recoil()
+	create_explosion()
+	camera.set_trauma(screenShakeTrauma)
+	camera.chromatic_aberration(chromaticAberrationDuration)
+	slowTime.start(slowTimeDuration, slowTimeStrength)
+
 func apply_recoil():
 	parent.stateMachine.apply_recoil(-recoilSpeed * Vector2(cos(rotation), sin(rotation)))
 
